@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Mental Health Services{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .header, .footer {
+            background-color: #005a87;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .nav {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+        .nav ul li a {
+            color: #005a87;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #005a87;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Mental Health Services</h1>
+    </div>
+    <div class="nav">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'recommend_doctor' %}">Recommend a Doctor</a></li>
+            <li><a href="{% url 'leave_review' %}">Leave a Review</a></li>
+            <li><a href="{% url 'create_questionnaire' %}">Create a Questionnaire</a></li>
+            <li><a href="{% url 'doctor_list' %}">Doctor List</a></li>
+            <li><a href="{% url 'create_doctor' %}">Create a Doctor</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Mental Health Services. All rights reserved.</p>
+    </div>
+</body>
+</html>

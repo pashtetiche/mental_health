@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ doctor.name }} - Doctor Details{% endblock %}
+
+{% block content %}
+    <h2>{{ doctor.name }}</h2>
+    <p>Specialty: {{ doctor.get_specialty_display }}</p>
+    <p>City: {{ doctor.city }}</p>
+    <p>Reception Type: {{ doctor.get_reception_type_display }}</p>
+    <p>Experience: {{ doctor.experience_years }} years</p>
+    <p>Description: {{ doctor.description }}</p>
+    <p>Approved: {{ doctor.approved }}</p>
+    <p>Diagnostics: {{ doctor.is_diagnostics }}</p>
+    <p>ICD Diagnosis: {{ doctor.is_icd_diagnosis }}</p>
+    <p>Medical Conclusion: {{ doctor.medical_conclusion }}</p>
+    <p>Recipe: {{ doctor.get_recipe_display }}</p>
+    <p>Price: {{ doctor.price }}$</p>
+    <a href="{% url 'doctor_list' %}">Back to list</a>
+{% endblock %}

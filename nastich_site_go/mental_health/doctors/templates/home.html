@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Mental Health Services{% endblock %}
+
+{% block content %}
+    <h2>Welcome</h2>
+    <h3>Find a Doctor</h3>
+    <form method="get" class="form-inline">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.name.label_tag }} {{ form.name }}
+        </div>
+        <div class="form-group">
+            {{ form.specialty.label_tag }} {{ form.specialty }}
+        </div>
+        <div class="form-group">
+            {{ form.city.label_tag }} {{ form.city }}
+        </div>
+        <div class="form-group">
+            {{ form.reception_type.label_tag }} {{ form.reception_type }}
+        </div>
+        <div class="form-group">
+            {{ form.is_diagnostics.label_tag }} {{ form.is_diagnostics }}
+        </div>
+        <div class="form-group">
+            {{ form.is_icd_diagnosis.label_tag }} {{ form.is_icd_diagnosis }}
+        </div>
+        <div class="form-group">
+            {{ form.medical_conclusion.label_tag }} {{ form.medical_conclusion }}
+        </div>
+        <div class="form-group">
+            {{ form.recipe.label_tag }} {{ form.recipe }}
+        </div>
+        <div class="form-group">
+            {{ form.price_min.label_tag }} {{ form.price_min }}
+        </div>
+        <div class="form-group">
+            {{ form.price_max.label_tag }} {{ form.price_max }}
+        </div>
+        <button type="submit">Search</button>
+    </form>
+
+    <h3>Doctor List</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Specialty</th>
+                <th>City</th>
+                <th>Experience</th>
+                <th>Approved</th>
+                <th>Reception Type</th>
+                <th>Diagnostics</th>
+                <th>ICD Diagnosis</th>
+                <th>Medical Conclusion</th>
+                <th>Recipe</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doctor in doctors %}
+            <tr>
+                <td>{{ doctor.name }}</td>
+                <td>{{ doctor.get_specialty_display }}</td>
+                <td>{{ doctor.city }}</td>
+                <td>{{ doctor.experience_years }} years</td>
+                <td>{{ doctor.approved }}</td>
+                <td>{{ doctor.get_reception_type_display }}</td>
+                <td>{{ doctor.is_diagnostics }}</td>
+                <td>{{ doctor.is_icd_diagnosis }}</td>
+                <td>{{ doctor.medical_conclusion }}</td>
+                <td>{{ doctor.get_recipe_display }}</td>
+                <td>{{ doctor.price }}$</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

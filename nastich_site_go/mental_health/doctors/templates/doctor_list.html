@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Doctor List - Mental Health Services{% endblock %}
+
+{% block content %}
+    <h2>Doctors</h2>
+    <a href="{% url 'create_doctor' %}">Create New Doctor</a>
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Filter</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Specialty</th>
+                <th>City</th>
+                <th>Experience</th>
+                <th>Reception Type</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doctor in doctors %}
+            <tr>
+                <td><a href="{% url 'doctor_detail' doctor.pk %}">{{ doctor.name }}</a></td>
+                <td>{{ doctor.get_specialty_display }}</td>
+                <td>{{ doctor.city }}</td>
+                <td>{{ doctor.experience_years }} years</td>
+                <td>{{ doctor.get_reception_type_display }}</td>
+                <td>{{ doctor.price }}$</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
